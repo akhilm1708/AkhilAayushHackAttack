@@ -85,7 +85,7 @@ def build_url(user):
 def INC(url):
     id = "increment?id="  
     num = input("What index would you like to change: ")
-    count = int(input("What number would you like to change it to: "))
+    count = int(input("How much would you like to increase it by? : "))
     
     for _ in range(count):
        
