@@ -69,6 +69,10 @@
 # print(response.text)
 
 
+
+
+
+
 # # Final Code
 
 import requests
@@ -82,9 +86,9 @@ def get_user_input():
 def build_url(user):
     return API + user
 
-def INC(url):
-    id = "increment?id="  
-    num = input("What index would you like to change: ")
+def VOTE(url):
+    id = "/increment?id="  
+    num = input("What index would you like to vote for: ")
     count = int(input("How much would you like to increase it by? : "))
     
     for _ in range(count):
@@ -146,18 +150,18 @@ check_user = user_response.text
 if "Error: No such user." in check_user:
     answer = input("Do you want to create this user (Y/N): ")
     if answer.lower() == "y":
-        my_response = requests.post(url)  
+        my_response = requests.post(API+"newuser/"+user)  
         print(my_response.status_code)
         print(my_response.headers)
         print(my_response.text)
 
 else:
-    action = input("Choose an action: [1] Increment, [2] Post, [3] Get, [4] Clear [5] Hack: ")
+    action = input("Choose an action: [1] Vote, [2] Post, [3] Get, [4] Clear [5] Hack: ")
 
-    if action == "1":
+    if action == "1": 
         inc_count = input("How many times: ")
         for _ in range(int(inc_count)):
-            INC(url)
+            VOTE(url)
 
     elif action == "2":
         post_count = input("How many times: ")
